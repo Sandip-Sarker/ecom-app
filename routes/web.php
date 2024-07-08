@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\DashboardController;
 
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Category\SubCategoryController;
+use App\Http\Controllers\Brand\BrandController;
 
 
 
@@ -26,9 +27,17 @@ Route::get('/checkout', [ChekoutController::class, 'index'])->name('checkout');
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('/category/manage', [CategoryController::class, 'index'])->name('category.index');
+    Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
     Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
+    Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
+    Route::get('/category/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
     Route::get('/sub-category/manage', [SubCategoryController::class, 'index'])->name('sub-category.index');
     Route::get('/sub-category/create', [SubCategoryController::class, 'create'])->name('sub-category.create');
+
+    Route::get('/brand/manage', [BrandController::class, 'index'])->name('brand.index');
+    Route::get('/brand/create', [BrandController::class, 'create'])->name('brand.create');
+
 });
