@@ -26,8 +26,10 @@
                     <h3 class="card-title">Create Brand Form</h3>
                 </div>
                 <div class="card-body">
-                    <p class="text-muted"></p>
-                    <form class="form-horizontal">
+                    <p class="text-success">{{session('message')}}</p>
+                    {{-- Form start --}}
+                    <form class="form-horizontal" action="{{route('brand.store')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="row mb-4">
                             <label for="name" class="col-md-3 form-label">Brand Name</label>
                             <div class="col-md-9">
@@ -47,10 +49,10 @@
                             </div>
                         </div>
                         <div class="row mb-4">
-                            <label for="status" class="col-md-3 form-label">Publication Staus</label>
+                            <label class="col-md-3 form-label">Publication Status</label>
                             <div class="col-md-9">
-                                <label><input  name="status" id="status"  type="radio" checked value="1"> Published</label>
-                                <label><input  name="status" id="status"  type="radio" value="0"> Unublished</label>
+                                <label><input  name="status"  type="radio" checked value="1"> Published</label>
+                                <label><input  name="status"  type="radio" value="0"> Unpublished</label>
                             </div>
                         </div>
                         <button class="btn btn-primary" type="submit">Create New Brand</button>

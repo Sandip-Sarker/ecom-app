@@ -27,6 +27,7 @@
                     <h3 class="card-title">All Brand Info</h3>
                 </div>
                 <div class="card-body">
+                    <p class="text-success"> {{session('message')}}</p>
                     <div class="table-responsive">
                         <table class="table table-bordered text-nowrap border-bottom" id="basic-datatable">
                             <thead>
@@ -40,22 +41,24 @@
                             </tr>
                             </thead>
                             <tbody>
+                            @foreach($brands as $brand)
                             <tr>
-                                <td>1</td>
-                                <td>T-shirt</td>
-                                <td>This is brand t-shirt</td>
-                                <td>img.jpg</td>
-                                <td>Published</td>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$brand->name}}</td>
+                                <td>{{$brand->description}}</td>
+                                <td><img src="{{asset($brand->image)}}" alt="" height="50"></td>
+                                <td>{{$brand->status == 1 ? 'published' : 'Unpublished'}}</td>
                                 <td>
-                                    <a href="" class="btn btn-success btn-sm" title="Edit">
+                                    <a href="{{route('brand.edit', ['id' => $brand->id])}}" class="btn btn-success btn-sm" title="Edit">
                                         <i class="fa fa-edit"></i>
                                     </a>
 
-                                    <a href="" class="btn btn-danger btn-sm" title="Delete">
+                                    <a href="{{route('brand.destroy', ['id' => $brand->id])}}" class="btn btn-danger btn-sm" title="Delete">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </td>
                             </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
