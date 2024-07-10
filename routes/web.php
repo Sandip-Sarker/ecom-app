@@ -40,6 +40,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     // sub-category here...
     Route::get('/sub-category', [SubCategoryController::class, 'index'])->name('sub-category.index');
     Route::get('/sub-category/create', [SubCategoryController::class, 'create'])->name('sub-category.create');
+    Route::post('/sub-category/store', [SubCategoryController::class, 'store'])->name('sub-category.store');
+    Route::get('/sub-category/edit/{id}', [SubCategoryController::class, 'edit'])->name('sub-category.edit');
+    Route::post('/sub-category/update/{id}', [SubCategoryController::class, 'update'])->name('sub-category.update');
+    Route::get('/sub-category/destroy/{id}', [SubCategoryController::class, 'destroy'])->name('sub-category.destroy');
 
     // brand here...
     Route::get('/brand', [BrandController::class, 'index'])->name('brand.index');

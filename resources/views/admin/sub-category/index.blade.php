@@ -27,11 +27,13 @@
                     <h3 class="card-title">All Sub Category Info</h3>
                 </div>
                 <div class="card-body">
+                    <p class="text-success">{{session('message')}}</p>
                     <div class="table-responsive">
                         <table class="table table-bordered text-nowrap border-bottom" id="basic-datatable">
                             <thead>
                             <tr>
                                 <th class="wd-15p border-bottom-0">SL No</th>
+                                <th class="wd-15p border-bottom-0">Category Name</th>
                                 <th class="wd-15p border-bottom-0">Name</th>
                                 <th class="wd-20p border-bottom-0">Description</th>
                                 <th class="wd-15p border-bottom-0">Image</th>
@@ -40,22 +42,25 @@
                             </tr>
                             </thead>
                             <tbody>
+                            @foreach($sub_categories as $sub_category)
                             <tr>
-                                <td>1</td>
-                                <td>T-shirt</td>
-                                <td>This is brand t-shirt</td>
-                                <td>img.jpg</td>
-                                <td>Published</td>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$sub_category->category->name}}</td>
+                                <td>{{$sub_category->name}}</td>
+                                <td>{{$sub_category->description}}</td>
+                                <td><img src="{{asset($sub_category->image)}}" alt="" height="50"></td>
+                                <td>{{$sub_category->status == 1 ? 'Published' : 'Unpublished'}}</td>
                                 <td>
-                                    <a href="" class="btn btn-success btn-sm" title="Edit">
+                                    <a href="{{route('sub-category.edit', ['id' => $sub_category->id])}}" class="btn btn-success btn-sm" title="Edit">
                                         <i class="fa fa-edit"></i>
                                     </a>
 
-                                    <a href="" class="btn btn-danger btn-sm" title="Delete">
+                                    <a href="{{route('sub-category.destroy', $sub_category->id)}}" class="btn btn-danger btn-sm" title="Delete">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </td>
                             </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
