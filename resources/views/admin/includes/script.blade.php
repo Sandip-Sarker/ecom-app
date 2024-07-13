@@ -51,6 +51,11 @@
 <script src="{{asset('/')}}admin/assets/plugins/datatable/responsive.bootstrap5.min.js"></script>
 <script src="{{asset('/')}}admin/assets/js/table-data.js"></script>
 
+
+<!-- INTERNAL Summernote Editor js -->
+<script src="{{asset('/')}}admin/assets/plugins/summernote-editor/summernote1.js"></script>
+<script src="{{asset('/')}}admin/assets/js/summernote.js"></script>
+
 <!-- COLOR THEME JS -->
 <script src="{{asset('/')}}admin/assets/js/themeColors.js"></script>
 

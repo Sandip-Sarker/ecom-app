@@ -59,10 +59,10 @@
                             </div>
                         </div>
                         <div class="row mb-4">
-                            <label for="status" class="col-md-3 mt-0 form-label">Publication Staus</label>
+                            <label for="status" class="col-md-3 mt-0 form-label">Publication Status</label>
                             <div class="col-md-9">
                                 <label><input  name="status" id="status"  type="radio" checked value="1"> Published</label>
-                                <label><input  name="status" id="status"  type="radio" value="0"> Unublished</label>
+                                <label><input  name="status" id="status"  type="radio" value="0"> Unpublished</label>
                             </div>
                         </div>
                         <button class="btn btn-primary" type="submit">Create New Sub Category</button>
