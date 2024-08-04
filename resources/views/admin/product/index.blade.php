@@ -33,12 +33,9 @@
                             <thead>
                             <tr>
                                 <th class="wd-15p border-bottom-0">SL No</th>
-                                <th class="wd-15p border-bottom-0">Category</th>
-                                <th class="wd-15p border-bottom-0">Sub Category</th>
-                                <th class="wd-15p border-bottom-0">Brand</th>
-                                <th class="wd-15p border-bottom-0">Unit</th>
+                                <th class="wd-15p border-bottom-0">Category Name</th>
                                 <th class="wd-15p border-bottom-0">Name</th>
-                                <th class="wd-20p border-bottom-0">Price </th>
+                                <th class="wd-20p border-bottom-0">Selling Price </th>
                                 <th class="wd-15p border-bottom-0">Image</th>
                                 <th class="wd-10p border-bottom-0">Status</th>
                                 <th class="wd-25p border-bottom-0">Action</th>
@@ -49,14 +46,15 @@
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$product->category->name}}</td>
-                                        <td>{{$product->subCategory->name}}</td>
-                                        <td>{{$product->brand->name}}</td>
-                                        <td>{{$product->unit->name}}</td>
                                         <td>{{$product->name}}</td>
                                         <td>{{$product->selling_price}}</td>
                                         <td><img src="{{asset($product->image)}}" alt="" height="50"></td>
                                         <td>{{$product->status == 1 ? 'Published' : 'Unpublished'}}</td>
                                         <td>
+                                            <a href="{{route('product.detail', $product->id)}}" class="btn btn-info btn-sm" title="Detail">
+                                                <i class="fa fa-book"></i>
+                                            </a>
+
                                             <a href="{{route('product.edit', $product->id)}}" class="btn btn-success btn-sm" title="Edit">
                                                 <i class="fa fa-edit"></i>
                                             </a>

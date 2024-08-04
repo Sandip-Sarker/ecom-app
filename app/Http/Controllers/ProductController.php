@@ -29,6 +29,23 @@ class ProductController extends Controller
         ]);
     }
 
+    public function getSubCategoryByCategory()
+    {
+
+        return response()->json(SubCategory::where('category_id', $_GET['id'])->get());
+    }
+
+    public function show($id)
+    {
+        return view('admin.product.detail ', [
+            'product' => Product::find($id),
+            'categories'        => Category::all(),
+            'sub_categories'    => SubCategory::all(),
+            'brands'            => Brand::all(),
+            'units'             => Unit::all(),
+        ]);
+    }
+
     public function store(Request $request)
     {
         $this->product = Product::newProduct($request);
@@ -50,6 +67,11 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         Product::updateProduct($request, $id);
+        if ($request->file('other_image'))
+        {
+            ProductImage::updateProductImage($request->file('other_image'), $id);
+        }
+
         return redirect('/product')->with('message', 'Product Update Successfully');
     }
 

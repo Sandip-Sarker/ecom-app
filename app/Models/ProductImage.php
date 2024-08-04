@@ -26,4 +26,18 @@ class ProductImage extends Model
             self::$productImages->save();
         }
     }
+
+    public static function updateProductImage($images, $id)
+    {
+        self::$productImages = ProductImage::where('product_id', $id)->get();
+        foreach (self::$productImages as $productImage)
+        {
+            if (file_exists($productImage->image))
+            {
+                unlink($productImage->image);
+            }
+            $productImage->delete();
+        }
+        self::newProductImage($images, $id);
+    }
 }

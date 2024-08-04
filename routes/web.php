@@ -16,8 +16,8 @@ use App\Http\Controllers\ProductController;
 
 
 Route::get('/', [WebsiteController::class, 'index'])->name('home');
-Route::get('/product-category', [WebsiteController::class, 'category'])->name('product-category');
-Route::get('/product-detail', [WebsiteController::class, 'product'])->name('product-detail');
+Route::get('/product-category/{id}', [WebsiteController::class, 'category'])->name('product-category');
+Route::get('/product-detail/{id}', [WebsiteController::class, 'product'])->name('product-detail');
 
 //Cart....
 Route::get('/show-cart', [CartController::class, 'index'])->name('show-cart');
@@ -65,7 +65,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     // Product here...
     Route::get('/product', [ProductController::class, 'index'])->name('product.index');
     Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+    Route::get('/get-sub-category-by-category', [ProductController::class, 'getSubCategoryByCategory'])->name('product.get-sub-category-by-category');
     Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
+    Route::get('/product/detail{id}', [ProductController::class, 'show'])->name('product.detail');
     Route::get('/product/edit{id}', [ProductController::class, 'edit'])->name('product.edit');
     Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
     Route::get('/product/destroy/{id}', [ProductController::class, 'destroy'])->name('product.destroy');

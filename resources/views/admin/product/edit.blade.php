@@ -35,7 +35,7 @@
                                 <div class="row mb-4">
                                     <label class="col-md-3 form-label">Category</label>
                                     <div class="col-md-9">
-                                        <select class="form-control" name="category_id">
+                                        <select class="form-control" name="category_id" onchange="getSubCategoryByCategory(this.value)">
                                             <option value=""> -- Select Category Name -- </option>
                                             @foreach($categories as $category)
                                                 <option value="{{$category->id}}" @selected($product->category_id == $category->id)>{{$category->name}}</option>
@@ -44,10 +44,11 @@
                                     </div>
                                 </div>
 
+
                                 <div class="row mb-4">
                                     <label class="col-md-3 form-label">Sub Category</label>
                                     <div class="col-md-9">
-                                        <select class="form-control" name="sub_category_id">
+                                        <select class="form-control" name="sub_category_id" id="subCategory">
                                             <option value=""> -- Select Sub Category Name -- </option>
                                             @foreach($sub_categories as $sub_category)
                                                 <option value="{{$sub_category->id}}" @selected($product->sub_category_id == $sub_category->id)>{{$sub_category->name}}</option>
@@ -121,7 +122,7 @@
                                 <div class="row mb-4">
                                     <label for="metaDescription" class="col-md-3 form-label">Meta Description</label>
                                     <div class="col-md-9">
-                                        <textarea class="form-control" name="meta_description" id="metaDescription" placeholder="Text Meta Description"> {{$product->metaDescription}}  </textarea>
+                                        <textarea class="form-control" name="meta_description" id="metaDescription" placeholder="Text Meta Description"> {{$product->meta_description}}  </textarea>
                                     </div>
                                 </div>
 
@@ -155,6 +156,9 @@
                                     <label for="image" class="col-md-3 form-label">Other Image</label>
                                     <div class="col-md-9">
                                         <input class="form-control-file" name="other_image[]" multiple id="otherImage" type="file">
+                                        @foreach($product->productImages as $productImage)
+                                            <img src="{{asset($productImage->image)}}" alt="" height="200" width="200">
+                                        @endforeach
                                     </div>
                                 </div>
 
@@ -166,7 +170,7 @@
                                     </div>
                                 </div>
 
-                                <button class="btn btn-primary" type="submit">Update Product</button>
+                                <button class="btn btn-primary" type="submit">Update Product Info</button>
                             </div>
 
                         </div>

@@ -37,9 +37,9 @@
                             </div>
                         </div>
                         <div class="row mb-4">
-                            <label for="description" class="col-md-3 form-label">Category Description</label>
+                            <label class="col-md-3 form-label">Category Description</label>
                             <div class="col-md-9">
-                                <textarea class="form-control" name="description" id="description" placeholder="Text something here.."></textarea>
+                                <textarea class="form-control" name="description" id="summernote" placeholder="Text something here.."></textarea>
                             </div>
                         </div>
                         <div class="row mb-4">

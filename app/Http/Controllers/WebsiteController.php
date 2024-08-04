@@ -2,22 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use function Livewire\Features\SupportFormObjects\all;
 
 class WebsiteController extends Controller
 {
     public function index()
     {
-        return view('website.home.index');
+        return view('website.home.index', [
+            'products'      => Product::latest()->take(8)->get(),
+            'categories'    => Category::all(),
+        ]);
     }
 
-    public function category()
+    public function category($id)
     {
-        return view('website.category.index');
+        return view('website.category.index', [
+            'categories'    => Category::all(),
+            'products'      => Product::where('category_id', $id)->latest()->get(),
+        ]);
     }
 
-    public function product()
+    public function product($id)
     {
-        return view('website.product.index');
+        return view('website.product.index', [
+            'categories'    => Category::all(),
+            'product'       => Product::find($id),
+        ]);
     }
 }

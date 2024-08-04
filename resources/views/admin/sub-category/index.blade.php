@@ -47,7 +47,7 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$sub_category->category->name}}</td>
                                 <td>{{$sub_category->name}}</td>
-                                <td>{{$sub_category->description}}</td>
+                                <td>{!! $sub_category->description !!}</td>
                                 <td><img src="{{asset($sub_category->image)}}" alt="" height="50"></td>
                                 <td>{{$sub_category->status == 1 ? 'Published' : 'Unpublished'}}</td>
                                 <td>

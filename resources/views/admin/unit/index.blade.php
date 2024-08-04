@@ -46,7 +46,7 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$unit->name}}</td>
                                 <td>{{$unit->code}}</td>
-                                <td>{{$unit->description}}</td>
+                                <td>{!! $unit->description !!}</td>
                                 <td>{{$unit->status == 1 ? 'published' : 'Unpublished'}}</td>
                                 <td>
                                     <a href="{{route('unit.edit', ['id' => $unit->id])}}" class="btn btn-success btn-sm" title="Edit">

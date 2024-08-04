@@ -64,3 +64,25 @@
 
 <!-- SWITCHER JS -->
 <script src="{{asset('/')}}admin/assets/switcher/js/switcher.js"></script>
+
+<script>
+    function getSubCategoryByCategory(categoryId) {
+
+        $.ajax({
+            type: "GET",
+            url: "{{url('/get-sub-category-by-category')}}",
+            data: {id: categoryId},
+            DataType: "JSON",
+            success: function (response) {
+               // console.log(response);
+                var option  = '';
+                option      += '<option value=""> -- Select Category Name -- </option>';
+                $.each(response, function (key, value) {
+                    option   += '<option value="'+value.id+'"> '+value.name+' </option>';
+                })
+                $('#subCategory').empty()
+                $('#subCategory').append(option);
+            }
+        });
+    }
+</script>

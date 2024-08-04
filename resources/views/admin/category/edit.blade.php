@@ -39,7 +39,7 @@
                         <div class="row mb-4">
                             <label class="col-md-3 form-label">Category Description</label>
                             <div class="col-md-9">
-                                <textarea class="form-control" name="description"  placeholder="Text something here..">{{$category->description}}</textarea>
+                                <textarea class="form-control" name="description" id="summernote" placeholder="Text something here..">{{$category->description}}</textarea>
                             </div>
                         </div>
                         <div class="row mb-4">
