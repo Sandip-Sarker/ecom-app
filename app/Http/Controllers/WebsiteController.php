@@ -25,6 +25,14 @@ class WebsiteController extends Controller
         ]);
     }
 
+    public function subCategory($id)
+    {
+        return view('website.category.index', [
+            'categories'    => Category::all(),
+            'products'      => Product::where('sub_category_id', $id)->latest()->get(),
+        ]);
+    }
+
     public function product($id)
     {
         return view('website.product.index', [

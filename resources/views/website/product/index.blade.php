@@ -71,21 +71,12 @@
                             </div>
                             <div class="bottom-content">
                                 <div class="row align-items-end">
-                                    <div class="col-lg-4 col-md-4 col-12">
+                                    <div class="col-md-12">
                                         <div class="button cart-button">
                                             <a href="{{route('show-cart')}}" class="btn" style="width: 100%; padding-top: 12px; ">Add to Cart</a>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-4 col-12">
-                                        <div class="wish-button">
-                                            <button class="btn"><i class="lni lni-reload"></i> Compare</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-12">
-                                        <div class="wish-button">
-                                            <button class="btn"><i class="lni lni-heart"></i> To Wishlist</button>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
