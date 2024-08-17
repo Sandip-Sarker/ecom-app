@@ -60,12 +60,15 @@
                             <p class="info-text" style="text-align: justify">
                                 {{$product->short_description}}
                             </p>
-                            <div class="row">
 
+                            {{-- Form Here --}}
+                            <form action="{{route('cart.add', $product->id)}}" method="POST">
+                                @csrf
+                            <div class="row">
                                 <div class="col-12">
                                     <div class="form-group quantity">
                                         <label for="color">Quantity</label>
-                                        <input type="number" class="form-control" value="1" min="1">
+                                        <input type="number" name="qty" class="form-control" value="1" min="1">
                                     </div>
                                 </div>
                             </div>
@@ -73,12 +76,13 @@
                                 <div class="row align-items-end">
                                     <div class="col-md-12">
                                         <div class="button cart-button">
-                                            <a href="{{route('show-cart')}}" class="btn" style="width: 100%; padding-top: 12px; ">Add to Cart</a>
+                                            <button type="submit" class="btn" style="width: 100%;">Add to Cart</button>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
+                            </form>
+
                         </div>
                     </div>
                 </div>

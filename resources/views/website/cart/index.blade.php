@@ -28,6 +28,7 @@
 
     <div class="shopping-cart section">
         <div class="container">
+            <h4 class="text-success text-center pb-4">{{session('message')}}</h4>
             <div class="cart-list-head">
 
                 <div class="cart-list-title">
@@ -41,10 +42,10 @@
                             <p>Quantity</p>
                         </div>
                         <div class="col-lg-2 col-md-2 col-12">
-                            <p>Subtotal</p>
+                            <p>Unit Price (TK)</p>
                         </div>
                         <div class="col-lg-2 col-md-2 col-12">
-                            <p>Discount</p>
+                            <p>Total Price (TK) </p>
                         </div>
                         <div class="col-lg-1 col-md-2 col-12">
                             <p>Remove</p>
@@ -52,115 +53,42 @@
                     </div>
                 </div>
 
-
+                @php($sum = 0)
+                @foreach($cart_products as $cart_product)
                 <div class="cart-single-list">
                     <div class="row align-items-center">
                         <div class="col-lg-1 col-md-1 col-12">
-                            <a href="product-details.html"><img src="{{asset('/')}}website/assets/images/cart/01.jpg" alt="#"></a>
+                            <a href="product-details.html"><img src="{{asset($cart_product->options->image)}}" alt="#"></a>
                         </div>
                         <div class="col-lg-4 col-md-3 col-12">
                             <h5 class="product-name"><a href="product-details.html">
-                                    Canon EOS M50 Mirrorless Camera</a></h5>
+                                    {{$cart_product->name}}</a></h5>
                             <p class="product-des">
-                                <span><em>Type:</em> Mirrorless</span>
-                                <span><em>Color:</em> Black</span>
+                                <span><em>Code:</em> {{$cart_product->options->code}}</span>
                             </p>
                         </div>
                         <div class="col-lg-2 col-md-2 col-12">
-                            <div class="count-input">
-                                <select class="form-control">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
+                            <form action="{{route('cart.update', $cart_product->rowId)}}" method="POST">
+                                @csrf
+                                <div class="input-group">
+                                  <input type="number" class="form-control" name="qty" value="{{$cart_product->qty}}" min="1">
+                                   <button type="submit" class="btn btn-success btn-sm">Update</button>
+                                </div>
+                            </form>
                         </div>
                         <div class="col-lg-2 col-md-2 col-12">
-                            <p>$910.00</p>
+                            <p>{{$cart_product->price}} </p>
                         </div>
                         <div class="col-lg-2 col-md-2 col-12">
-                            <p>$29.00</p>
+                            <p>{{$cart_product->price * $cart_product->qty}}</p>
                         </div>
                         <div class="col-lg-1 col-md-2 col-12">
-                            <a class="remove-item" href="javascript:void(0)"><i class="lni lni-close"></i></a>
+                            <a class="remove-item" href="{{route('cart.remove', $cart_product->rowId)}}"><i class="lni lni-close"></i></a>
                         </div>
                     </div>
                 </div>
-
-
-                <div class="cart-single-list">
-                    <div class="row align-items-center">
-                        <div class="col-lg-1 col-md-1 col-12">
-                            <a href="product-details.html"><img src="{{asset('/')}}website/assets/images/cart/02.jpg" alt="#"></a>
-                        </div>
-                        <div class="col-lg-4 col-md-3 col-12">
-                            <h5 class="product-name"><a href="product-details.html">
-                                    Apple iPhone X 256 GB Space Gray</a></h5>
-                            <p class="product-des">
-                                <span><em>Memory:</em> 256 GB</span>
-                                <span><em>Color:</em> Space Gray</span>
-                            </p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <div class="count-input">
-                                <select class="form-control">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <p>$1100.00</p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <p>—</p>
-                        </div>
-                        <div class="col-lg-1 col-md-2 col-12">
-                            <a class="remove-item" href="javascript:void(0)"><i class="lni lni-close"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="cart-single-list">
-                    <div class="row align-items-center">
-                        <div class="col-lg-1 col-md-1 col-12">
-                            <a href="product-details.html"><img src="{{asset('/')}}website/assets/images/cart/03.jpg" alt="#"></a>
-                        </div>
-                        <div class="col-lg-4 col-md-3 col-12">
-                            <h5 class="product-name"><a href="product-details.html">HP LaserJet Pro Laser Printer</a></h5>
-                            <p class="product-des">
-                                <span><em>Type:</em> Laser</span>
-                                <span><em>Color:</em> White</span>
-                            </p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <div class="count-input">
-                                <select class="form-control">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <p>$550.00</p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <p>—</p>
-                        </div>
-                        <div class="col-lg-1 col-md-2 col-12">
-                            <a class="remove-item" href="javascript:void(0)"><i class="lni lni-close"></i></a>
-                        </div>
-                    </div>
-                </div>
+                    @php($sum = $sum + ($cart_product->price * $cart_product->qty))
+                @endforeach
 
             </div>
             <div class="row">
@@ -183,10 +111,10 @@
                             <div class="col-lg-4 col-md-6 col-12">
                                 <div class="right">
                                     <ul>
-                                        <li>Cart Subtotal<span>$2560.00</span></li>
-                                        <li>Shipping<span>Free</span></li>
-                                        <li>You Save<span>$29.00</span></li>
-                                        <li class="last">You Pay<span>$2531.00</span></li>
+                                        <li>Cart Subtotal<span>TK. {{$sum}}</span></li>
+                                        <li>Tax Amount (15%)<span>TK. {{$tax = round( ($sum * 0.15) )}}</span></li>
+                                        <li>Shipping<span>TK. {{$shipping = 100}}</span></li>
+                                        <li class="last">Total Payable<span>TK. {{$total = $sum + $tax + $shipping}}</span></li>
                                     </ul>
                                     <div class="button">
                                         <a href="{{route('checkout')}}" class="btn">Checkout</a>

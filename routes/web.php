@@ -21,7 +21,10 @@ Route::get('/product-sub-category/{id}', [WebsiteController::class, 'subCategory
 Route::get('/product-detail/{id}', [WebsiteController::class, 'product'])->name('product-detail');
 
 //Cart....
-Route::get('/show-cart', [CartController::class, 'index'])->name('show-cart');
+Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+Route::get('/show-cart', [CartController::class, 'index'])->name('cart.show');
+Route::get('/cart/remove/{rowId}', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/cart/update/{rowId}', [CartController::class, 'update'])->name('cart.update');
 
 //Checkout....
 Route::get('/checkout', [ChekoutController::class, 'index'])->name('checkout');
