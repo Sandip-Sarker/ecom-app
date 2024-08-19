@@ -12,6 +12,7 @@ use App\Http\Controllers\Brand\BrandController;
 use App\Http\Controllers\Unit\UnitController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerAuthController;
+use App\Http\Controllers\CourierController;
 
 
 
@@ -86,4 +87,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::get('/product/edit{id}', [ProductController::class, 'edit'])->name('product.edit');
     Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
     Route::get('/product/destroy/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+
+    Route::resource('courier', CourierController::class);
 });

@@ -28,7 +28,7 @@
             fontList: ["Arial",
                     "Arial Black",
                     "Comic Sans MS",
-                    "Courier New",
+                    "courier New",
                     "Geneva",
                     "Georgia",
                     "Helvetica",
@@ -535,7 +535,7 @@
 
         /** EVENT HANDLERS */
 
-       
+
 
         // undo / redo
         $(document).on("click", ".richText-undo, .richText-redo", function(e) {

@@ -308,7 +308,7 @@
 					isSupportAmd: r,
 					isSupportTouch: f,
 					isFontInstalled: function(t) {
-						var e = "Comic Sans MS" === t ? "Courier New" : "Comic Sans MS",
+						var e = "Comic Sans MS" === t ? "courier New" : "Comic Sans MS",
 							n = document.createElement("canvas").getContext("2d");
 						n.font = "200px '" + e + "'";
 						var o = n.measureText("mmmmmmmmmmwwwww").width;
@@ -5029,7 +5029,7 @@
 					hintSelect: "after",
 					hintDirection: "bottom",
 					styleTags: ["p", "blockquote", "pre", "h1", "h2", "h3", "h4", "h5", "h6"],
-					fontNames: ["Arial", "Arial Black", "Comic Sans MS", "Courier New", "Helvetica Neue", "Helvetica", "Impact", "Lucida Grande", "Tahoma", "Times New Roman", "Verdana"],
+					fontNames: ["Arial", "Arial Black", "Comic Sans MS", "courier New", "Helvetica Neue", "Helvetica", "Impact", "Lucida Grande", "Tahoma", "Times New Roman", "Verdana"],
 					fontNamesIgnoreCheck: [],
 					addDefaultFonts: !0,
 					fontSizes: ["8", "9", "10", "11", "12", "14", "18", "24", "36"],
@@ -5262,7 +5262,7 @@
 				y = r.a.create('<div class="modal note-modal" aria-hidden="false" tabindex="-1" role="dialog"/>', (function(t, e) {
 					e.fade && t.addClass("fade"), t.attr({
 						"aria-label": e.title
-					}), t.html(['<div class="modal-dialog">', '<div class="modal-content">', e.title ? 
+					}), t.html(['<div class="modal-dialog">', '<div class="modal-content">', e.title ?
 					'<div class="modal-header"><h6 class="modal-title">' + e.title + '</h6> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">&times;</button></div>' : ""
 					, '<div class="modal-body">' + e.body + "</div>", e.footer ? '<div class="modal-footer">' + e.footer + "</div>" : "", "</div>", "</div>"].join(""))
 				})),
