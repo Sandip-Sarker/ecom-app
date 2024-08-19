@@ -12,6 +12,7 @@ class WebsiteController extends Controller
     public function index()
     {
         return view('website.home.index', [
+            'categories'    => Category::all(),
             'products'      => Product::latest()->take(8)->get(),
         ]);
     }

@@ -10,4 +10,9 @@ class ChekoutController extends Controller
     {
         return view('website.checkout.index');
     }
+
+    public function confirmOrder()
+    {
+        return view('website.checkout.confirm-order');
+    }
 }
