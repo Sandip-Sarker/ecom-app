@@ -31,6 +31,8 @@ Route::post('/cart/update/{rowId}', [CartController::class, 'update'])->name('ca
 //Checkout....
 Route::get('/checkout', [ChekoutController::class, 'index'])->name('checkout');
 Route::get('/checkout/confirm-order', [ChekoutController::class, 'confirmOrder'])->name('checkout.confirm.order');
+Route::post('/checkout/new-order', [ChekoutController::class, 'newOrder'])->name('checkout.new-order');
+Route::get('/checkout/complete-order', [ChekoutController::class, 'completeOrder'])->name('checkout.complete-order');
 
 //CustomerAuth....
 Route::post('/customer/store', [CustomerAuthController::class, 'newCustomer'])->name('customer.store');
