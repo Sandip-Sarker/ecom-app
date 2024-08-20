@@ -14,6 +14,10 @@ class ChekoutController extends Controller
 
     public function index()
     {
+        if (Session::get('customer_id'))
+        {
+            return redirect('/checkout/confirm-order');
+        }
         return view('website.checkout.index');
     }
 
@@ -48,7 +52,7 @@ class ChekoutController extends Controller
             Cart::remove($item->rowId);
         }
 
-        return redirect('/checkout/complete-order')->with('message', 'Order complete successfully');
+        return redirect('/checkout/complete-order')->with('message', 'Order complete successfully ...');
     }
 
     public function completeOrder()

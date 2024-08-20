@@ -13,6 +13,7 @@ use App\Http\Controllers\Unit\UnitController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerAuthController;
 use App\Http\Controllers\CourierController;
+use App\Http\Controllers\AdminOrderController;
 
 
 
@@ -89,6 +90,14 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::get('/product/edit{id}', [ProductController::class, 'edit'])->name('product.edit');
     Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
     Route::get('/product/destroy/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+
+    Route::get('/admin-order/', [AdminOrderController::class, 'index'])->name('admin-order.index');
+    Route::get('/admin-order/detail/{id}', [AdminOrderController::class, 'detail'])->name('admin-order.detail');
+    Route::get('/admin-order/edit/{id}', [AdminOrderController::class, 'edit'])->name('admin-order.edit');
+    Route::post('/admin-order/update/{id}', [AdminOrderController::class, 'update'])->name('admin-order.update');
+    Route::get('/admin-order/show-invoice/{id}', [AdminOrderController::class, 'showInvoice'])->name('admin-order.show-invoice');
+    Route::get('/admin-order/download-invoice/{id}', [AdminOrderController::class, 'downloadInvoice'])->name('admin-order.download-invoice');
+    Route::get('/admin-order/destroy/{id}', [AdminOrderController::class, 'destroy'])->name('admin-order.destroy');
 
     Route::resource('courier', CourierController::class);
 });
