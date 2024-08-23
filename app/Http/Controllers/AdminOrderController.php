@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Courier;
 use App\Models\Order;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use function Livewire\find;
 
@@ -88,7 +89,14 @@ class AdminOrderController extends Controller
 
     public function destroy($id)
     {
+        Order::find($id)->delete();
+        $orderDetails = OrderDetail::where('order_id', $id)->get();
+        foreach ($orderDetails as $orderDetail)
+        {
+            $orderDetail->delete();
+        }
 
+        return back()->with('message', 'Admin Order Info Delete Successfully');
     }
 
 }

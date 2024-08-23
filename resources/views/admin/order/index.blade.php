@@ -48,6 +48,7 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$order->id}}</td>
+                                    <td>{{$order->order_id}}</td>
                                     <td>{{$order->order_date}}</td>
                                     <td>
                                         Name: {{$order->customer->name}}<br>
@@ -61,7 +62,7 @@
                                             <i class="fa fa-bookmark-o"></i>
                                         </a>
 
-                                        <a href="{{route('admin-order.edit', $order->id)}}" class="btn btn-primary btn-sm" title="Order Edit">
+                                        <a href="{{route('admin-order.edit', $order->id)}}" class="btn btn-primary btn-sm {{$order->order_status == 'complete' ? 'disabled' : ''}}" title="Order Edit">
                                             <i class="fa fa-edit"></i>
                                         </a>
 
@@ -69,11 +70,11 @@
                                             <i class="fa fa-book"></i>
                                         </a>
 
-                                        <a href="{{route('admin-order.download-invoice', $order->id)}}" class="btn btn-warning btn-sm" title="Download Order Invoice">
+                                        <a href="{{route('admin-order.download-invoice', $order->id)}}" target="_blank" class="btn btn-warning btn-sm" title="Download Order Invoice">
                                             <i class="fa fa-download"></i>
                                         </a>
 
-                                        <a href="{{route('admin-order.destroy', $order->id)}}" class="btn btn-danger btn-sm" title="Order Delete">
+                                        <a href="{{route('admin-order.destroy', $order->id)}}" class="btn btn-danger btn-sm {{$order->order_status == 'cancel' ? '' : 'disabled'}}" title="Order Delete">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </td>
