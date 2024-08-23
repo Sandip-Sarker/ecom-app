@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Courier;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use function Livewire\find;
 
 class AdminOrderController extends Controller
 {
@@ -75,7 +76,7 @@ class AdminOrderController extends Controller
 
     public function showInvoice($id)
     {
-        return view('admin.order.show-invoice');
+        return view('admin.order.show-invoice' , ['order' => Order::find($id)]);
 
     }
 
