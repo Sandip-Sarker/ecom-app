@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use function Livewire\find;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class AdminOrderController extends Controller
 {
@@ -83,7 +84,9 @@ class AdminOrderController extends Controller
 
     public function downloadInvoice($id)
     {
-        return view('admin.order.download-invoice');
+        $pdf = Pdf::loadView('admin.order.download-invoice', ['order' => Order::find($id)]);
+        return $pdf->stream();
+        //return view('admin.order.download-invoice');
 
     }
 

@@ -47,7 +47,7 @@
                             @foreach($orders as $order)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$order->id}}</td>
+                                    <td>{{$loop->iteration}}</td>
                                     <td>{{$order->order_id}}</td>
                                     <td>{{$order->order_date}}</td>
                                     <td>
