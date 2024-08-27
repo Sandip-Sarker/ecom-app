@@ -47,13 +47,13 @@
                             @foreach($orders as $order)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$loop->iteration}}</td>
-                                    <td>{{$order->order_id}}</td>
+                                    <td>{{$order->id}}</td>
                                     <td>{{$order->order_date}}</td>
                                     <td>
                                         Name: {{$order->customer->name}}<br>
                                         Mobile: {{$order->customer->name}}
                                     </td>
+                                    <td>{{$order->order_total}}</td>
                                     <td>{{$order->order_status}}</td>
                                     <td>{{$order->payment_status}}</td>
                                     <td>{{$order->delivery_status}}</td>

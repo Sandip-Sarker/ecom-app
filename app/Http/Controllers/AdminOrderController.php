@@ -78,7 +78,9 @@ class AdminOrderController extends Controller
 
     public function showInvoice($id)
     {
-        return view('admin.order.show-invoice' , ['order' => Order::find($id)]);
+        return view('admin.order.show-invoice' , [
+            'order' => Order::find($id),
+        ]);
 
     }
 
